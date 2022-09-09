@@ -9,13 +9,13 @@ import SwiftUI
 
 struct ContentView: View {
     
-    @State private var alertIsVisible: Bool = false
-    @State private var sliderValue: Double = 50.0
-    @State private var game: Game = Game()
+    @State private var alertIsVisible = false
+    @State private var sliderValue = 50.0
+    @State private var game = Game()
     
     var body: some View {
         VStack {
-            Text("🎯🎯🎯\nPUT THE BULLSEYE AS CLOSE AS YOU CAN TO")
+            Text("🎯🎯🎯\n PUT THE BULLSEYE AS CLOSE AS YOU CAN TO")
                 .kerning(2.0)
                 .font(.footnote)
                 .fontWeight(.bold)
@@ -35,7 +35,6 @@ struct ContentView: View {
             
             //button
             Button(action: {
-                print("Hello, SwiftUI")
                 self.alertIsVisible = true
             })  {
                 Text("HIT ME")
