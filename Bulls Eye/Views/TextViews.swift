@@ -84,12 +84,19 @@ struct HitMeButtonView : View {
             })
         .foregroundColor(.white)
         .cornerRadius(21)
+        .overlay(
+        
+            RoundedRectangle(cornerRadius: 21.0)
+                .strokeBorder(Color.white, lineWidth: 2.0)
+                
+        )
         
         
         //pop-up button
         .alert("Hello There!", isPresented: $alertIsVisible) {
             Button("Awesome") {}
-        }  message: {
+        }
+    message:  {
             let roundedValue = Int(sliderValue.rounded())
             Text("The slider's value is \(roundedValue). \n" + "You scored \(self.game.points(sliderValue: roundedValue)) points this round.")
         }

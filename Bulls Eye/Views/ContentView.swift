@@ -15,7 +15,7 @@ struct ContentView: View {
     
     var body: some View {
         ZStack {
-            Color("Background Color")
+            BackgroundView(game: $game)
             VStack {
                 
                 //label & number
