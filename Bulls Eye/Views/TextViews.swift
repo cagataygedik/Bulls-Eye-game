@@ -92,24 +92,7 @@ struct HitMeButtonView : View {
         )
         
         
-        //pop-up button
-        .alert(
-          "Hello there!",
-          isPresented: $alertIsVisible,
-          presenting: {
-            let roundedValue = Int(sliderValue.rounded())
-            return (
-              roundedValue,
-              game.points(sliderValue: roundedValue)
-            )
-          } () as (roundedValue: Int, points: Int)
-        ) { data in
-          Button("Awesome!") {
-            game.startNewRound(points: data.points)
-          }
-        } message: { data in
-          Text("The slider's value is \(data.roundedValue).\n" + "You scored \(data.points) points this round.")
-        }
+                
     }
 }
 

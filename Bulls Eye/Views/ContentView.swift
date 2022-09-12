@@ -21,14 +21,19 @@ struct ContentView: View {
                 
                 //label & number
                 InstructionView(game: $game)
-                    .padding(.bottom, 100)
+                    .padding(.bottom, alertIsVisible ? 0 : 100 )
                 
-                //Button and Pop-up
-                HitMeButtonView(alertIsVisible: $alertIsVisible, sliderValue: $sliderValue, game: $game)
+                if alertIsVisible {
+                    PointsView(alertIsVisible: $alertIsVisible, sliderValue: $sliderValue, game:$game)
+                } else {
+                    HitMeButtonView(alertIsVisible: $alertIsVisible, sliderValue: $sliderValue, game: $game)
+                    
+                }
             }
+            if !alertIsVisible {
             //Slider
             SliderView(sliderValue: $sliderValue)
-            
+            }
         }
         .edgesIgnoringSafeArea(.all)
         
