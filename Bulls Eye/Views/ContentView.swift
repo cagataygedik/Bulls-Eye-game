@@ -16,17 +16,19 @@ struct ContentView: View {
     var body: some View {
         ZStack {
             BackgroundView(game: $game)
+            
             VStack {
                 
                 //label & number
                 InstructionView(game: $game)
-                
-                //Slider
-                SliderView(sliderValue: $sliderValue)
+                    .padding(.bottom, 100)
                 
                 //Button and Pop-up
                 HitMeButtonView(alertIsVisible: $alertIsVisible, sliderValue: $sliderValue, game: $game)
             }
+            //Slider
+            SliderView(sliderValue: $sliderValue)
+            
         }
         .edgesIgnoringSafeArea(.all)
         
@@ -43,9 +45,7 @@ struct InstructionView : View {
                 .padding(.leading, 30.0)
                 .padding(.trailing, 30.0)
             
-            
-            BigNumberText(text:     String(game.target))
-            
+            BigNumberText(text:String(game.target))
             
         }
     }

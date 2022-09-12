@@ -18,8 +18,9 @@ struct BackgroundView: View {
         }
         .padding()
         .background(
-            Color("BackgroundColor")
-                .edgesIgnoringSafeArea(.all))
+            RingsView()
+            
+        )
     }
 }
 
@@ -28,7 +29,11 @@ struct TopView: View {
     
     var body: some View {
         HStack{
-            RoundedImageViewStroked(systemName: "arrow.counterclockwise")
+            Button(action: {
+                game.restart()
+            }) {
+                RoundedImageViewStroked(systemName: "arrow.counterclockwise")
+            }
             Spacer()
             RoundedImageViewFilled(systemName: "list.dash")
         }
@@ -40,8 +45,10 @@ struct NumberView: View {
     var text: String
     
     var body: some View {
-        Color.gray
-            .frame(width: 56.0, height: 56.0)
+        VStack(spacing: 5){
+            LabelText(text: title.uppercased())
+            RoundRectTextView(text: text)
+        }
     }
 }
 
@@ -52,13 +59,39 @@ struct BottomView: View {
         HStack{
             NumberView(title: "Score", text: String(game.score))
             Spacer()
-            NumberView(title: "Round", text: String(game.round))        }
+            NumberView(title: "Round", text: String(game.round))
+        }
     }
 }
 
+struct RingsView: View {
+    
+    @Environment (\.colorScheme) var colorScheme
+    
+    var body: some View {
+        ZStack{
+            Color("BackgroundColor")
+                .edgesIgnoringSafeArea(.all)
+            
+            let opacity = colorScheme == .dark ? 0.1 : 0.3
+
+            ForEach(1..<6) { ring in
+                Circle()
+                    .stroke(lineWidth: 20)
+                    .fill(
+                    
+                RadialGradient(gradient: Gradient(colors: [Color("CircleColor").opacity(0.8*opacity), Color("CircleColor").opacity(0)]),center: .center, startRadius: 100, endRadius: 300))
+                
+                    .frame(width: CGFloat(ring)*100, height: CGFloat(ring)*100)
+                                }
+                
+        }
+    }
+}
 
 struct BackgroundView_Previews: PreviewProvider {
     static var previews: some View {
         BackgroundView(game: .constant(Game()))
     }
 }
+

@@ -42,6 +42,7 @@ struct SliderLabelText: View {
         Text(text)
             .fontWeight(.bold)
             .foregroundColor(Color("TextColor"))
+            .frame(width: 35.0)
     }
 }
 
@@ -50,8 +51,6 @@ struct SliderView : View {
     
     
     var body: some View {
-        
-        
         HStack {
             SliderLabelText(text: "1")
             Slider(value: self.$sliderValue, in: 1.0...100.0)
@@ -69,6 +68,7 @@ struct HitMeButtonView : View {
     var body: some View {
         Button(action: {
             self.alertIsVisible = true
+            
         })  {
             Text("HIT ME")
                 .font(.title3)
@@ -93,14 +93,35 @@ struct HitMeButtonView : View {
         
         
         //pop-up button
-        .alert("Hello There!", isPresented: $alertIsVisible) {
-            Button("Awesome") {}
-        }
-    message:  {
+        .alert(
+          "Hello there!",
+          isPresented: $alertIsVisible,
+          presenting: {
             let roundedValue = Int(sliderValue.rounded())
-            Text("The slider's value is \(roundedValue). \n" + "You scored \(self.game.points(sliderValue: roundedValue)) points this round.")
+            return (
+              roundedValue,
+              game.points(sliderValue: roundedValue)
+            )
+          } () as (roundedValue: Int, points: Int)
+        ) { data in
+          Button("Awesome!") {
+            game.startNewRound(points: data.points)
+          }
+        } message: { data in
+          Text("The slider's value is \(data.roundedValue).\n" + "You scored \(data.points) points this round.")
         }
     }
+}
+
+struct LabelText: View {
+    var text: String
+    
+    var body: some View {
+       Text(text)
+            .bold()
+            .foregroundColor(Color("TextColor"))
+            .kerning(1.5)
+            .font(.caption)
 }
 
 
@@ -110,7 +131,9 @@ struct TextViews_Previews: PreviewProvider {
             InstrucationText(text: "Instructions")
             BigNumberText(text: "999")
             SliderLabelText(text: "999")
+            LabelText(text: "9")
             
         }
     }
+}
 }
