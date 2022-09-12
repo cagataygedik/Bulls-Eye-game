@@ -41,7 +41,7 @@ struct InstructionView : View {
     var body: some View {
         
         VStack {
-            InstrucationText(text: "🎯🎯🎯\n PUT THE BULLSEYE AS CLOSE AS YOU CAN TO")
+            InstructionText(text: "🎯🎯🎯\n PUT THE BULLSEYE AS CLOSE AS YOU CAN TO")
                 .padding(.leading, 30.0)
                 .padding(.trailing, 30.0)
             

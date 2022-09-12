@@ -16,6 +16,7 @@
 		A234966328CE233C00DF6B32 /* shapes.swift in Sources */ = {isa = PBXBuildFile; fileRef = A234966228CE233C00DF6B32 /* shapes.swift */; };
 		A257466528CE27D200CF504B /* RoundedViews.swift in Sources */ = {isa = PBXBuildFile; fileRef = A257466428CE27D200CF504B /* RoundedViews.swift */; };
 		A257466728CE391400CF504B /* BackgroundView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A257466628CE391400CF504B /* BackgroundView.swift */; };
+		A2A2234F28CF5F4A00F5E863 /* PointsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2A2234E28CF5F4A00F5E863 /* PointsView.swift */; };
 		A2CA694D28CB6E4600907F0E /* Bulls_EyeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2CA694C28CB6E4600907F0E /* Bulls_EyeTests.swift */; };
 /* End PBXBuildFile section */
 
@@ -40,6 +41,7 @@
 		A234966228CE233C00DF6B32 /* shapes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = shapes.swift; sourceTree = "<group>"; };
 		A257466428CE27D200CF504B /* RoundedViews.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundedViews.swift; sourceTree = "<group>"; };
 		A257466628CE391400CF504B /* BackgroundView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackgroundView.swift; sourceTree = "<group>"; };
+		A2A2234E28CF5F4A00F5E863 /* PointsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PointsView.swift; sourceTree = "<group>"; };
 		A2CA694A28CB6E4600907F0E /* Bulls EyeTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Bulls EyeTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		A2CA694C28CB6E4600907F0E /* Bulls_EyeTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Bulls_EyeTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -115,6 +117,7 @@
 				A234966228CE233C00DF6B32 /* shapes.swift */,
 				A257466428CE27D200CF504B /* RoundedViews.swift */,
 				A257466628CE391400CF504B /* BackgroundView.swift */,
+				A2A2234E28CF5F4A00F5E863 /* PointsView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -239,6 +242,7 @@
 				A257466528CE27D200CF504B /* RoundedViews.swift in Sources */,
 				A20D0D4928CB2ED5009D3DA8 /* ContentView.swift in Sources */,
 				A203C1A328CCC999004B90ED /* TextViews.swift in Sources */,
+				A2A2234F28CF5F4A00F5E863 /* PointsView.swift in Sources */,
 				A257466728CE391400CF504B /* BackgroundView.swift in Sources */,
 				A20D0D5828CB4C6B009D3DA8 /* Game.swift in Sources */,
 				A234966328CE233C00DF6B32 /* shapes.swift in Sources */,
