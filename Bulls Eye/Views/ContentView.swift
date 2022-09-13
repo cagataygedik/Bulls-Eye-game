@@ -25,14 +25,19 @@ struct ContentView: View {
                 
                 if alertIsVisible {
                     PointsView(alertIsVisible: $alertIsVisible, sliderValue: $sliderValue, game:$game)
+                        .transition(.scale)
                 } else {
                     HitMeButtonView(alertIsVisible: $alertIsVisible, sliderValue: $sliderValue, game: $game)
+                        .transition(.scale)
+                    
                     
                 }
             }
             if !alertIsVisible {
-            //Slider
-            SliderView(sliderValue: $sliderValue)
+                //Slider
+                SliderView(sliderValue: $sliderValue)
+                    .transition(.scale)
+                
             }
         }
         .edgesIgnoringSafeArea(.all)
@@ -61,6 +66,7 @@ struct InstructionView : View {
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
         ContentView()
+            .previewInterfaceOrientation(.portraitUpsideDown)
         
         //added landscape mode
         ContentView().previewLayout(.fixed(width: 568, height: 320))

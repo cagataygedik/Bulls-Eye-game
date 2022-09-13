@@ -11,16 +11,16 @@ import XCTest
 class Bulls_EyeTests: XCTestCase {
     
     var game: Game!
-
+    
     override func setUpWithError() throws {
         game = Game()
     }
-
+    
     override func tearDownWithError() throws {
         game = nil
         
     }
-
+    
     func testScorePositive() {
         let guess = game.target + 5
         let score = game.points(sliderValue: guess)
@@ -44,7 +44,7 @@ class Bulls_EyeTests: XCTestCase {
         let score = game.points(sliderValue: guess)
         XCTAssertEqual(score, 200)
     }
-
+    
     func testScoreClose() {
         let guess = game.target + 2
         let score = game.points(sliderValue: guess)
@@ -56,10 +56,8 @@ class Bulls_EyeTests: XCTestCase {
         game.restart()
         XCTAssertEqual(game.score, 0)
         XCTAssertEqual(game.round, 1)
-
-        
     }
     
-    }
+}
 
 

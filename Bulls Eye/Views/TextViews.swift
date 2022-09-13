@@ -67,8 +67,9 @@ struct HitMeButtonView : View {
     
     var body: some View {
         Button(action: {
-            self.alertIsVisible = true
-            
+            withAnimation{
+                self.alertIsVisible = true
+            }
         })  {
             Text("HIT ME")
                 .font(.title3)
@@ -83,16 +84,16 @@ struct HitMeButtonView : View {
                 LinearGradient(gradient: Gradient(colors: [Color.white.opacity(0.3), Color.clear]), startPoint: .top, endPoint: .bottom)
             })
         .foregroundColor(.white)
-        .cornerRadius(21)
+        .cornerRadius(Constants.General.roundedRectCornerRadius)
         .overlay(
-        
-            RoundedRectangle(cornerRadius: 21.0)
-                .strokeBorder(Color.white, lineWidth: 2.0)
-                
+            
+            RoundedRectangle(cornerRadius: Constants.General.roundedRectCornerRadius)
+                .strokeBorder(Color.white, lineWidth: Constants.General.strokeWidth)
+            
         )
         
         
-                
+        
     }
 }
 
@@ -100,45 +101,82 @@ struct LabelText: View {
     var text: String
     
     var body: some View {
-       Text(text)
+        Text(text)
             .bold()
             .foregroundColor(Color("TextColor"))
             .kerning(1.5)
             .font(.caption)
-}
-}
-    
-    struct BodyText: View {
-        var text: String
-        
-        var body:some View{
-            Text(text)
-                .fontWeight(.semibold)
-                .font(.subheadline)
-                .foregroundColor(Color("TextColor"))
-                .multilineTextAlignment(.center)
-                .lineSpacing(12.0)
-        }
     }
+}
 
+struct BodyText: View {
+    var text: String
     
-    struct ButtonText: View {
-        var text: String
-        
-        var body:some View{
-            Text(text)
-                .fontWeight(.bold)
-                .foregroundColor(Color.white)
-                .multilineTextAlignment(.center)
-                .padding()
-                .frame(maxWidth: .infinity)
-                .background(
-                    Color.accentColor
-                )
-                .cornerRadius(12)
-        }
+    var body:some View{
+        Text(text)
+            .fontWeight(.semibold)
+            .font(.subheadline)
+            .foregroundColor(Color("TextColor"))
+            .multilineTextAlignment(.center)
+            .lineSpacing(12.0)
     }
+}
 
+
+struct ButtonText: View {
+    var text: String
+    
+    var body:some View{
+        Text(text)
+            .fontWeight(.bold)
+            .foregroundColor(Color.white)
+            .multilineTextAlignment(.center)
+            .padding()
+            .frame(maxWidth: .infinity)
+            .background(
+                Color.accentColor
+            )
+            .cornerRadius(12)
+    }
+}
+
+struct ScoreText: View {
+    var score: Int
+    
+    var body:some View{
+        Text(String(score))
+            .font(.title3)
+            .fontWeight(.bold)
+            .foregroundColor(Color("TextColor"))
+            .kerning(-0.2)
+        
+    }
+}
+
+struct DateText: View {
+    var date: Date
+    
+    var body:some View{
+        Text(date, style: .time)
+            .font(.title3)
+            .fontWeight(.bold)
+            .foregroundColor(Color("TextColor"))
+            .kerning(-0.2)
+        
+    }
+}
+
+struct BigBoldText: View {
+    let text: String
+    
+    var body: some View {
+        Text(text.uppercased())
+            .font(.title)
+            .fontWeight(.black)
+            .foregroundColor(Color("TextColor"))
+            .kerning(2.0)
+    }
+}
 
 
 struct TextViews_Previews: PreviewProvider {
@@ -150,6 +188,9 @@ struct TextViews_Previews: PreviewProvider {
             LabelText(text: "9")
             BodyText(text: "You scored 200 points\n 🎉🎉🎉")
             ButtonText(text: "Start New Round")
+            ScoreText(score: 19)
+            DateText(date: Date())
+            BigBoldText(text: "leaderboard")
         }
         .padding()
     }

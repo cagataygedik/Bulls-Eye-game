@@ -26,6 +26,7 @@ struct BackgroundView: View {
 
 struct TopView: View {
     @Binding var game: Game
+    @State private var leaderboardIsShowing = false
     
     var body: some View {
         HStack{
@@ -35,7 +36,16 @@ struct TopView: View {
                 RoundedImageViewStroked(systemName: "arrow.counterclockwise")
             }
             Spacer()
-            RoundedImageViewFilled(systemName: "list.dash")
+            Button(action: {
+                leaderboardIsShowing = true
+            }) {
+                RoundedImageViewFilled(systemName: "list.dash")
+            }.sheet(isPresented: $leaderboardIsShowing, onDismiss: {
+                
+            }, content:{
+                LeaderboardView(game: $game, leaderboardIsShowing: $leaderboardIsShowing)
+                
+            })
         }
     }
 }
@@ -74,17 +84,17 @@ struct RingsView: View {
                 .edgesIgnoringSafeArea(.all)
             
             let opacity = colorScheme == .dark ? 0.1 : 0.3
-
+            
             ForEach(1..<6) { ring in
                 Circle()
                     .stroke(lineWidth: 20)
                     .fill(
-                    
-                RadialGradient(gradient: Gradient(colors: [Color("CircleColor").opacity(0.8*opacity), Color("CircleColor").opacity(0)]),center: .center, startRadius: 100, endRadius: 300))
+                        
+                        RadialGradient(gradient: Gradient(colors: [Color("CircleColor").opacity(0.8*opacity), Color("CircleColor").opacity(0)]),center: .center, startRadius: 100, endRadius: 300))
                 
                     .frame(width: CGFloat(ring)*100, height: CGFloat(ring)*100)
-                                }
-                
+            }
+            
         }
     }
 }
