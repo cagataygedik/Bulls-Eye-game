@@ -50,11 +50,13 @@ struct Game {
         leaderboardEntries.sort  { $0.score > $1.score }
     }
     
-    mutating func startNewRound(points : Int) {
-        score += points
-        round += 1
-        target = Int.random(in: 1...100)
-    }
+    mutating func startNewRound(points: Int) {
+           score += points
+           round += 1
+           leaderboardEntries.append(LeaderboardEntry(score: score, date: Date()))
+           leaderboardEntries.sort { $0.score > $1.score }
+           target = Int.random(in: 1...100)
+       }
     
     mutating func restart() {
         score = 0
